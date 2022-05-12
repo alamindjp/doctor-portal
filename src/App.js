@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import About from "./Pages/About/About";
 import Appointment from "./Pages/Appointment/Appointment";
+import Contact from "./Pages/Contact";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Reviews from "./Pages/Reviews/Reviews";
-import Contact from "./Pages/Shared/Footer/Contact/Contact";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Navbar from "./Pages/Shared/Navbar/Navbar";
 
@@ -21,7 +21,6 @@ function App() {
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-      <Footer/>
     </div>
   );
 }
