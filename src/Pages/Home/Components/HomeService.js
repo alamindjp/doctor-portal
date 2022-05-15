@@ -1,13 +1,13 @@
 import React from "react";
 
-const Service = ({ service }) => {
+const HomeService = ({ service }) => {
   const { name, description, img } = service;
   return (
-    <div className="card bg-base-100 shadow-xl mt-10">
+    <div className="mt-10 shadow-xl card bg-base-100">
       <figure className="px-10 pt-10">
         <img src={img} alt="Service" className="rounded-xl" />
       </figure>
-      <div className="card-body items-center text-center">
+      <div className="items-center text-center card-body">
         <h2 className="card-title">{name}</h2>
         <p>{description ? description : 'No Discription'}</p>
         <div className="card-actions">
@@ -18,4 +18,4 @@ const Service = ({ service }) => {
   );
 };
 
-export default Service;
+export default HomeService;

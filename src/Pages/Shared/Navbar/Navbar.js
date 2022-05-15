@@ -13,13 +13,13 @@ const Navbar = () => {
       </>
     );
     return (
-      <div className="navbar bg-base-100">
+      <div className="fixed top-0 z-50 navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -34,15 +34,15 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="p-2 mt-3 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
               {menuItem}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Doctor Portal</a>
+          <Link to='/' className="text-xl normal-case btn btn-ghost">Doctor Portal</Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">{menuItem}</ul>
+        <div className="hidden navbar-center lg:flex">
+          <ul className="p-0 menu menu-horizontal">{menuItem}</ul>
         </div>
       </div>
     );

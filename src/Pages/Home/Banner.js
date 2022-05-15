@@ -10,7 +10,7 @@ const banner = () => {
           className="rounded-lg shadow-2xl w-[322px] md:w-[458]"
           alt="Photos"
         />
-        <div className="pr-20">
+        <div className="lg:pr-20">
           <h1 className="text-5xl font-bold">Your New Smile Starts Here</h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda

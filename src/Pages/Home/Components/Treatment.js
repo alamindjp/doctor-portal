@@ -7,7 +7,8 @@ const Treatment = () => {
       <div className="flex-col hero-content lg:flex-row gap-28">
         <img
           src={treatment}
-          className="rounded-lg shadow-2xl w-[322px] md:w-[458]" alt=""
+          className="rounded-lg shadow-2xl w-[322px] md:w-[458]"
+          alt=""
         />
         <div>
           <h1 className="text-5xl font-bold">

@@ -5,11 +5,15 @@ const MakeAppointment = () => {
     return (
       <section className="hero px-0 lg:px-40 gap-15 bg-[url('/src/assets/images/appointment.png')]">
         <div className="flex-col p-0 hero-content lg:flex-row">
-          <img src={doctor} className="max-w-sm hidden lg:block rounded-lg mt-[-60px]" />
-          <div className='px-10'>
+          <img
+            src={doctor}
+            className="max-w-sm hidden lg:block rounded-lg mt-[-60px]"
+            alt=""
+          />
+          <div className="px-10">
             <h1 className="text-xl font-bold text-primary">APPOINTMENT</h1>
-            <h1 className="text-4xl font-bold">Make an appointment Today</h1>
-            <p className="py-6">
+            <h1 className="py-5 text-4xl font-bold">Make an appointment Today</h1>
+            <p className='pb-5'>
               It is a long established fact that a reader will be distracted by
               the readable content of a page when looking at its layout. The
               point of using Lorem Ipsumis that it has a more-or-less normal

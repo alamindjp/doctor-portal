@@ -2,10 +2,10 @@ import React from "react";
 import fluoride from "../../assets/images/fluoride.png";
 import cavity from "../../assets/images/cavity.png";
 import whitening from "../../assets/images/whitening.png";
-import Service from "./Components/Service";
 import Treatment from "./Components/Treatment";
+import HomeService from "./Components/HomeService";
 
-const Services = () => {
+const HomeServices = () => {
   const services = [
     {
       _id: 1,
@@ -30,14 +30,14 @@ const Services = () => {
     },
   ];
   return (
-    <div className="px-12 my-28">
+    <div className="px-6 md:px-12 my-28">
       <div className="text-center">
         <h5 className="text-xl font-bold text-primary">OUR SERVICES</h5>
         <h2 className="text-4xl">Services We Provide</h2>
       </div>
       <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
-          <Service key={service._id} service={service} />
+          <HomeService key={service._id} service={service} />
         ))}
       </div>
       <Treatment />
@@ -45,4 +45,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default HomeServices;

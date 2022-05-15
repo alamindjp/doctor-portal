@@ -2,8 +2,8 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <section className="my-20 bg-[url('/src/assets/images/appointment.png')]">
-      <div className="text-center text-white">
+    <section className="my-15 bg-[url('/src/assets/images/appointment.png')]">
+      <div className="pt-5 text-center text-white">
         <h5 className="text-xl font-bold text-primary">Contact Us</h5>
         <h2 className="text-4xl">What Our Patients Says</h2>
       </div>

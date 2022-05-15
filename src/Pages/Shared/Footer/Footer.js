@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const date = new Date().getFullYear();
   return (
-    <footer className="p-10 bg-cover bg-[url('/src/assets/images/footer.png')]">
-      <div className="footer">
+    <footer className="max-w-4xl p-5 mx-auto bg-cover bg-[url('/src/assets/images/footer.png')]">
+      <div className="justify-center md:justify-between footer">
         <div>
           <span className="footer-title">SERVICES</span>
           <Link to="/" className="link link-hover">
@@ -40,7 +41,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="my-5 text-center">
-        <p>Copyright 2022 All Rights Reserved</p>
+        <p>Copyright {date} All Rights Reserved</p>
       </div>
     </footer>
   );
