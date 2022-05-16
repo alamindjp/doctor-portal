@@ -13,7 +13,7 @@ import SingUp from "./Pages/SingUp/SingUp";
 function App() {
   return (
     <div>
-      <Navbar />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -27,7 +27,7 @@ function App() {
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SingUp />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </div>
   );

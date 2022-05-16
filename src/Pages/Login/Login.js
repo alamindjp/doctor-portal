@@ -3,20 +3,22 @@ import React from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import Loading from '../Shared/Loading/Loading';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const navigate = useNavigate()
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/";
     let signInError;
-
+    
     if (loading || gLoading) {
         return <Loading></Loading>
     }
@@ -25,8 +27,8 @@ const Login = () => {
         signInError = <p className='text-red-400'>{error?.message || gError?.message}</p>
     }
     if (user || gUser) {
-        console.log(user || gUser)
-        navigate('/appointment')
+        navigate(from, { replace: true });
+           
     }
 
 

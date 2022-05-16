@@ -1,8 +1,15 @@
 import { format } from 'date-fns';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 
 const BookingModal = ({ treatment, date, setTreatment }) => {
-  const { name, slots } = treatment;
+  const { name, slots  } = treatment;
+  const [user, loading] = useAuthState(auth);
+  if (loading) {
+    return <Loading/>
+  }
   const handleBooking = event => {
     event.preventDefault();
     const slot = event.target.slot.value;
@@ -20,12 +27,12 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
             <input type="text" readOnly value={format(date, "PP")} className="input input-bordered w-full max-w-xs" />
             <select name='slot' className="select select-bordered w-full max-w-xs">
               {
-                slots.map(slot => <option value={slot}>{slot}</option>)
+                slots.map((slot, index) => <option key={index} value={slot}>{slot}</option>)
               }
             </select>
-            <input type="text" name='name' placeholder="full Name" className="input input-bordered w-full max-w-xs" />
+            <input type="text" name='name' readOnly value={user?.displayName|| ''} className="input input-bordered w-full max-w-xs" />
             <input type="number" name='phone' placeholder="Phone" className="input input-bordered w-full max-w-xs" />
-            <input type="email" name='email' placeholder="Your Email" className="input input-bordered w-full max-w-xs" />
+            <input type="email" name='email' readOnly value={user?.email|| ''} className="input input-bordered w-full max-w-xs" />
             <input type="submit" value='Submit' className="font-bold text-white uppercase btn btn-primary bg-gradient-to-r from-secondary to-primary" />
           </form>
         </div>
