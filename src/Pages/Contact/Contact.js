@@ -1,9 +1,10 @@
 import React from 'react';
+import Loading from '../Shared/Loading/Loading';
 
 const Contact = () => {
     return (
-        <div>
-            <h1>This is Contact page</h1>
+        <div className='mt=5'>
+            <Loading></Loading>
         </div>
     );
 };
