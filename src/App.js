@@ -9,6 +9,8 @@ import NotFound from "./Pages/NotFound/NotFound";
 import Reviews from "./Pages/Reviews/Reviews";
 import Navbar from "./Pages/Shared/Navbar/Navbar";
 import SingUp from "./Pages/SingUp/SingUp";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         <Route path="/signup" element={<SingUp />} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
+      <ToastContainer/>
     </div>
   );
 }

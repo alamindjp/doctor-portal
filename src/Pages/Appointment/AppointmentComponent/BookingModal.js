@@ -3,26 +3,47 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
+import { toast } from 'react-toastify';
 
-const BookingModal = ({ treatment, date, setTreatment }) => {
-  const { _id, name, slots  } = treatment;
+const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
+  const { _id, name, slots } = treatment;
   const [user, loading] = useAuthState(auth);
   if (loading) {
-    return <Loading/>
+    return <Loading />
   }
+  const formattedDate = format(date, 'PP')
   const handleBooking = event => {
     event.preventDefault();
     const slot = event.target.slot.value;
     const booking = {
       treatmentId: _id,
       treatment: name,
+      date: formattedDate,
       slot: slot,
-      presentEmail: user.email,
-      presentName: user.displayName,
+      patient: user.email,
+      patientName: user.displayName,
       phone: event.target.phone.value
     }
-    setTreatment(null)
-    console.log(slot)
+    fetch('http://localhost:5000/booking', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(booking)
+
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          toast(`Appointment is set ${formattedDate} at ${slot}`)
+        }
+        //close the modal
+        else {
+          toast.error(`Already have an appointment on ${data.booking?.date} at ${data.booking?.slot}`)
+        }
+        refetch()
+        setTreatment(null)
+      })
   }
   return (
     <div className='sm:max-w-sm'>
@@ -38,9 +59,9 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                 slots.map((slot, index) => <option key={index} value={slot}>{slot}</option>)
               }
             </select>
-            <input type="text" name='name' readOnly value={user?.displayName|| ''} className="input input-bordered w-full max-w-xs" />
+            <input type="text" name='name' readOnly value={user?.displayName || ''} className="input input-bordered w-full max-w-xs" />
             <input type="number" name='phone' placeholder="Phone" className="input input-bordered w-full max-w-xs" />
-            <input type="email" name='email' readOnly value={user?.email|| ''} className="input input-bordered w-full max-w-xs" />
+            <input type="email" name='email' readOnly value={user?.email || ''} className="input input-bordered w-full max-w-xs" />
             <input type="submit" value='Submit' className="font-bold text-white uppercase btn btn-primary bg-gradient-to-r from-secondary to-primary" />
           </form>
         </div>
