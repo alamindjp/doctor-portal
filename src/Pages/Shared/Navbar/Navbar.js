@@ -6,7 +6,7 @@ import auth from '../../../firebase.init';
 import Loading from '../Loading/Loading';
 
 const Navbar = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate
   if (loading) {
     return <Loading/>

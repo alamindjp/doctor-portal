@@ -5,7 +5,7 @@ import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 
 const BookingModal = ({ treatment, date, setTreatment }) => {
-  const { name, slots  } = treatment;
+  const { _id, name, slots  } = treatment;
   const [user, loading] = useAuthState(auth);
   if (loading) {
     return <Loading/>
@@ -13,6 +13,14 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
   const handleBooking = event => {
     event.preventDefault();
     const slot = event.target.slot.value;
+    const booking = {
+      treatmentId: _id,
+      treatment: name,
+      slot: slot,
+      presentEmail: user.email,
+      presentName: user.displayName,
+      phone: event.target.phone.value
+    }
     setTreatment(null)
     console.log(slot)
   }
